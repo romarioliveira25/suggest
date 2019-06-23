@@ -10,7 +10,8 @@
  * $('#container').suggest(haystack, {
  *   suggestionColor   : '#cccccc',
  *   moreIndicatorClass: 'suggest-more',
- *   moreIndicatorText : '&hellip;'
+ *   moreIndicatorText : '&hellip;',
+ *   minChar: 4
  * });
  *
  */
@@ -23,7 +24,8 @@
         var settings = $.extend({
             suggestionColor: '#ccc',
             moreIndicatorClass: 'suggest-more',
-            moreIndicatorText: '&hellip;'
+            moreIndicatorText: '&hellip;',
+            minChar: 4
         }, options);
 
         var UP_CODE = 38,
@@ -154,8 +156,8 @@
                 // make sure the helper is empty
                 $suggest.empty();
 
-                // if nothing has been input, leave it with that
-                if (!$.trim(needle).length) {
+                // if nothing has been input or input lenght less of minChar, leave it with that
+                if (!$.trim(needle).length || $.trim(needle).length < settings.minChar) {
                     return false;
                 }
 

@@ -40,14 +40,15 @@
 	<input type="text" id="searchTextXhrSimple" placeholder="Type something" autocomplete="off" spellcheck="false" dir="ltr" style="background: transparent;">
 
 	<script>
-		var haystack = ["ActionScript", "AppleScript", "Asp", "Basic" , "C", "C++", "Cobol", "Dylan", "Java", "Python"];
+		var haystack = [];
 		$('#searchTextXhrSimple').suggest(haystack, {
 			// Available options with defaults:
 			suggestionColor   : '#cccccc',
 			moreIndicatorClass: 'suggest-more',
 			moreIndicatorText : '&hellip;',
+			minChar: 4,
 			xhr: { 
-				url: '/search.php',
+				url: '/search_dicionario_api.php',
 				paramKey: 'q' // the querystring param name passed ?q=<needle value> 
 			}
 		});
